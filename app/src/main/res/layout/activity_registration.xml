@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.hk.reciptmanagment.data.viewModel.RegistrationViewModel" />
+
+        <variable
+            name="error"
+            type="com.hk.reciptmanagment.utils.FormErrors" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mcgpalette0_500">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_constrain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_15sdp"
+            android:background="@drawable/round_corner_white_background"
+            android:padding="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/txt_title"
+                style="@style/title.title1"
+                android:layout_width="wrap_content"
+                android:text="@string/signup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_first_name_hint"
+                style="@style/TextInputLayoutStyle"
+                errorText='@{viewModel.formErrors.contains(error.MISSING_FIRST_NAME) ? String.format(@string/enter_valid_data,@string/first_name) : ""}'
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/first_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_first_name"
+                    style="@style/form.text"
+                    android:imeOptions="actionNext"
+                    android:nextFocusRight="@+id/width"
+                    android:text="@={viewModel.user.firstName}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_last_name_hint"
+                style="@style/TextInputLayoutStyle"
+                errorText='@{viewModel.formErrors.contains(error.MISSING_LAST_NAME) ? String.format(@string/enter_valid_data,@string/last_name) : ""}'
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/last_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_first_name_hint">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_last_name"
+                    style="@style/form.text"
+                    android:imeOptions="actionNext"
+                    android:nextFocusRight="@+id/width"
+                    android:text="@={viewModel.user.lastName}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_username_hint"
+                style="@style/TextInputLayoutStyle"
+                android:layout_width="0dp"
+                errorText='@{viewModel.formErrors.contains(error.INVALID_USERNAME) ? String.format(@string/enter_valid_data,@string/username) : ""}'
+                android:layout_height="wrap_content"
+                android:hint="@string/username"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_last_name_hint">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_username"
+                    style="@style/form.text"
+                    android:imeOptions="actionNext"
+                    android:nextFocusRight="@+id/width"
+                    android:text="@={viewModel.user.userName}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_phoneNumber_hint"
+                style="@style/TextInputLayoutStyle"
+                android:layout_width="0dp"
+                errorText='@{viewModel.formErrors.contains(error.INVALID_PHONE_NUMBER) ? String.format(@string/enter_valid_data,@string/phone_number) : ""}'
+                android:layout_height="wrap_content"
+                android:hint="@string/phone_number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_username_hint">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_phoneNumber"
+                    style="@style/form.number"
+                    android:imeOptions="actionNext"
+                    android:maxLength="12"
+                    android:nextFocusRight="@+id/width"
+                    android:text="@={viewModel.user.phoneNumber}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_password_hint"
+                style="@style/TextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                errorText='@{viewModel.formErrors.contains(error.INVALID_PASSWORD) ? String.format(@string/enter_valid_data,@string/password) : ""}'
+                android:hint="@string/password"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_phoneNumber_hint">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password"
+                    style="@style/form.password"
+                    android:imeOptions="actionNext"
+                    android:maxLength="12"
+                    android:nextFocusRight="@+id/width"
+                    android:text="@={viewModel.user.password}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_confirm_hint"
+                style="@style/TextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/confirm"
+                errorText='@{viewModel.formErrors.contains(error.PASSWORDS_NOT_MATCHING) ? String.format(@string/password_did_not_match) : ""}'
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_password_hint">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_confirm"
+                    style="@style/form.password"
+                    android:imeOptions="actionDone"
+                    android:maxLength="12"
+                    android:nextFocusRight="@+id/width"
+                    android:text="@={viewModel.confirmPassword}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addEdit"
+                style="@style/button.submit"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:onClick="@{()->viewModel.onRegistration()}"
+                android:text="@string/submit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_confirm_hint" />
+
+            <ProgressBar
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:visibility="@{viewModel.showPd?View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+</layout>

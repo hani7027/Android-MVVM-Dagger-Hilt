@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">HK Tech</string>
+    <string name="sign_in">Sign In</string>
+    <string name="signup">Sign Up</string>
+    <string name="invalid_username_or_passwod">Invalid username or password</string>
+    <string name="submit">Submit</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="username">Username</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="or">Or</string>
+    <string name="registor_now">Registor Now</string>
+    <string name="enter_valid_data">Enter Valid %s </string>
+    <string name="password_did_not_match">Those passwords didn’t match. Try again. </string>
+</resources>
